@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectTypeGuids>{82b43b9b-a64c-4715-b499-d71e9ca2bd60};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{5123C23C-D7E3-4804-92A4-9C20C190A9DF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Refactoring</RootNamespace>
+    <AssemblyName>Refactoring</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <GeneratePkgDefFile>false</GeneratePkgDefFile>
+    <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>
+    <IncludeDebugSymbolsInVSIXContainer>false</IncludeDebugSymbolsInVSIXContainer>
+    <IncludeDebugSymbolsInLocalVSIXDeployment>false</IncludeDebugSymbolsInLocalVSIXDeployment>
+    <VSSDKTargetPlatformRegRootSuffix>Roslyn</VSSDKTargetPlatformRegRootSuffix>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(DevEnvDir)devenv.exe</StartProgram>
+    <StartArguments>/rootsuffix Roslyn</StartArguments>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Roslyn.Compilers, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Roslyn.Compilers.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Compilers.CSharp, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Roslyn.Compilers.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Services, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Roslyn.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Services.Editor, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Roslyn.Services.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Microsoft.VisualStudio.CoreUtility">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.Data">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.Logic">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.UI">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Text.UI.Wpf">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ExtractMethod\ExtractMethodAction.cs" />
+    <Compile Include="ExtractMethod\ExtractMethodRefactoring.cs" />
+    <Compile Include="GenerateClassFromUsage\GenerateClassFromUsageAction.cs" />
+    <Compile Include="GenerateClassFromUsage\GenerateClassFromUsageIssue.cs" />
+    <Compile Include="InlineMethod\InlineMethodAction.cs" />
+    <Compile Include="InlineMethod\InlineMethodRefactoring.cs" />
+    <Compile Include="IntroduceExplainingVariable\IntroduceExplainingVariableAction.cs" />
+    <Compile Include="IntroduceExplainingVariable\IntroduceExplainingVariableRefactoring.cs" />
+    <Compile Include="IntroduceLocal\IntroduceLocalAction.cs" />
+    <Compile Include="IntroduceLocal\IntroduceLocalRefactoring.cs" />
+    <Compile Include="InlineLocal\InlineLocalAction.cs" />
+    <Compile Include="InlineLocal\InlineLocalRefactoring.cs" />
+    <Compile Include="IntroduceParameterObject\IntroduceParameterObjectAction.cs" />
+    <Compile Include="IntroduceParameterObject\IntroduceParameterObjectRefactoring.cs" />
+    <Compile Include="MakeConst\MakeConstAction.cs" />
+    <Compile Include="MakeConst\MakeConstIssue.cs" />
+    <Compile Include="MakeMethodStatic\MakeMethodStaticAction.cs" />
+    <Compile Include="MakeSingleton\MakeSingletonAction.cs" />
+    <Compile Include="MakeSingleton\MakeSingletonRefactoring.cs" />
+    <Compile Include="MakeMethodStatic\MakeMethodStaticRefactoring.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PullUpField\PullUpFieldAction.cs" />
+    <Compile Include="PullUpField\PullUpFieldRefactoring.cs" />
+    <Compile Include="RemoveAssignmentToParameter\RemoveAssignmentToParameterAction.cs" />
+    <Compile Include="RemoveAssignmentToParameter\RemoveAssignmentToParameterIssue.cs" />
+    <Compile Include="RemoveParameter\RemoveParameterAction.cs" />
+    <Compile Include="RemoveParameter\RemoveParameterIssue.cs" />
+    <Compile Include="RenameLocal\RenameLocalAction.cs" />
+    <Compile Include="RenameLocal\RenameLocalRefactoring.cs" />
+    <Compile Include="RenameParameter\RenameParameterAction.cs" />
+    <Compile Include="RenameParameter\RenameParameterRefactoring.cs" />
+    <Compile Include="ReplaceConstructorWithFactoryMethod\ReplaceConstructorWithFactoryMethodAction.cs" />
+    <Compile Include="ReplaceConstructorWithFactoryMethod\ReplaceConstructorWithFactoryMethodRefactoring.cs" />
+    <Compile Include="ReplaceMagicNumber\ReplaceMagicNumberAction.cs" />
+    <Compile Include="ReplaceMagicNumber\ReplaceMagicNumberRefactoring.cs" />
+    <Compile Include="EncapsulateField\EncapsulateFieldAction.cs" />
+    <Compile Include="EncapsulateField\EncapsulateFieldRefactoring.cs" />
+    <Compile Include="ReverseConditional\ReverseConditionalAction.cs" />
+    <Compile Include="ReverseConditional\ReverseConditionalRefactoring.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source.extension.vsixmanifest">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\VSSDK\Microsoft.VsSDK.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
